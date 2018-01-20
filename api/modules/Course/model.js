@@ -4,13 +4,9 @@ const MODEL_NAME = 'Course'
 
 const _schema = {
   name: String,
-  teacher: {
-    type: String,
-    default: 'Suissa',
-    required: true
-  },
-  books: [{ type: Schema.Types.ObjectId, ref: 'Book' }],
-  students: [{ type: Schema.Types.ObjectId, ref: 'User' }]
+  teacher: { type: Schema.Types.ObjectId, ref: 'User' },
+  books: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Book' }],
+  students: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }]
 }
 const schema = new mongoose.Schema( _schema )
 const Model = mongoose.model( MODEL_NAME, schema )
