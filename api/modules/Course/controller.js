@@ -1,57 +1,27 @@
-const Model = require( './model' )
+const Model = require('./model')
 
 const ACTIONS_PATH = './../../'
-const create = require( ACTIONS_PATH + 'actions/create' )( Model )
+const create = require(ACTIONS_PATH + 'actions/create')(Model)
 
-const find = ( req, res, query = {} ) => 
-  Model.find( query, ( err, data ) => {
-    if ( err ) return console.log( 'ERRO: ', err )
+const find = require(ACTIONS_PATH + 'actions/find')(Model)
 
-    return res.json( data )
-  } )
+const findOne = require(ACTIONS_PATH + 'actions/findOne')(Model)
 
-const findOne = ( req, res ) => {
+const findByName = require(ACTIONS_PATH + 'actions/findByName')(Model)
 
-  const query = {
-    _id: req.params.id
-  }
+const populate = require(ACTIONS_PATH + 'actions/populate')(Model)
 
-  return Model.findOne( query, ( err, data ) => {
-    if ( err ) return console.log( 'ERRO: ', err )
+const update = require(ACTIONS_PATH + 'actions/update')(Model)
 
-    return res.json( data )
-  } )
-}
+const remove = require(ACTIONS_PATH + 'actions/remove')(Model)
 
-const update = ( req, res ) => {
-  const query = {
-    _id: req.params.id
-  }
-  const mod = req.body
-  
-  Model.update( query, mod, ( err, data ) => {
-    if ( err ) return console.log( 'ERRO: ', err )
-
-    return res.json( data )
-  } )
-}
-
-const remove = ( req, res ) => {
-  const query = {
-    _id: req.params.id
-  }
-  
-  Model.remove( query, ( err, data ) => {
-    if ( err ) return console.log( 'ERRO: ', err )
-
-    return res.json( data )
-  } )
-}
 
 module.exports = {
   create,
   find,
   findOne,
+  findByName,
+  populate,
   update,
-  remove 
+  remove
 }

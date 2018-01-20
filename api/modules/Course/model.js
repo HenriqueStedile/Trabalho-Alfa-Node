@@ -4,7 +4,7 @@ const MODEL_NAME = 'Course'
 
 const _schema = {
   name: String,
-  teacher: { type: Schema.Types.ObjectId, ref: 'User' },
+  teacher: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
   books: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Book' }],
   students: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }]
 }

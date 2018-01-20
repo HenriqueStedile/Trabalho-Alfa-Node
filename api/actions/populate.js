@@ -4,6 +4,7 @@ module.exports = (Model) => (req, res) => {
         _id: req.params.id
     }
     Model.findOne(query)
+        .populate ('teacher')
         .populate('students')
         .populate('books')
         .then((data) => res.json(data))
