@@ -1,12 +1,9 @@
-module.exports = ( Model ) => ( req, res, query = {} ) => 
-Model.remove = ( req, res ) => {
-    const query = {
-      _id: req.params.id
-    }
-    
-    Model.remove( query, ( err, data ) => {
-      if ( err ) return console.log( 'ERRO: ', err )
-  
-      return res.json( data )
-    } )
+module.exports = (Model) => (req, res) => {
+  const query = {
+    _id: req.params.id
   }
+
+  Model.remove(query)
+  .then((data) => res.json(data))
+  .catch((err) => console.log('ERRO: ', err))
+}

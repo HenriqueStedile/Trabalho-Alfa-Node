@@ -1,13 +1,10 @@
-module.exports = ( Model ) => ( req, res, query = {} ) => 
-Model.update = ( req, res ) => {
+module.exports = ( Model ) => ( req, res) => {
     const query = {
       _id: req.params.id
     }
     const mod = req.body
-    
-    Model.update( query, mod, ( err, data ) => {
-      if ( err ) return console.log( 'ERRO: ', err )
-  
-      return res.json( data )
-    } )
+
+    Model.update(query, mod)
+    .then((data) => res.json(data))
+    .catch((err) => console.log('ERRO: ', err))
   }
