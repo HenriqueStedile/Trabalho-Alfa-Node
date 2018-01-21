@@ -8,10 +8,11 @@ const Controller = require('./controller')
 router.get('/', (req, res, next) => {
   const url_parts = url.parse(req.url)
   const query = querystring.parse(url_parts.query)
-  if (typeof query.name === undefined) {
-    Controller.find(req, res, {})
-  } else
+  if (typeof query.name == "undefined")
+    Controller.find(req, res)
+  else
     Controller.findByName(req, res, query)
+
 })
 
 router.get('/:id', (req, res, next) =>

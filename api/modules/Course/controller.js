@@ -24,6 +24,8 @@ const find = require(ACTIONS_PATH + 'actions/find')(Model)
 
 const findOne = require(ACTIONS_PATH + 'actions/findOne')(Model)
 
+const findByName = require(ACTIONS_PATH + 'actions/findByName')(Model)
+
 const populate = require(ACTIONS_PATH + 'actions/populate')(Model)
 
 const update = require(ACTIONS_PATH + 'actions/update')(Model)
@@ -35,6 +37,7 @@ module.exports = {
   create,
   find,
   findOne,
+  findByName,
   populate,
   update,
   remove

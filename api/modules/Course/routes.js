@@ -1,5 +1,7 @@
 const express = require('express')
 const router = express.Router()
+const url = require('url');
+const querystring = require('querystring')
 
 const Controller = require('./controller')
 
@@ -11,9 +13,9 @@ router.get('/', (req, res, next) =>
 router.get('/', (req, res, next) => {
   const url_parts = url.parse(req.url)
   const query = querystring.parse(url_parts.query)
-  if (typeof query.name === undefined) {
-    Controller.find(req, res, {})
-  } else
+  if (typeof query.name == "undefined")
+    Controller.find(req, res)
+  else
     Controller.findByName(req, res, query)
 })
 
