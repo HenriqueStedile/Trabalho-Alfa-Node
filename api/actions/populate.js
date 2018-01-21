@@ -8,5 +8,5 @@ module.exports = (Model) => (req, res) => {
         .populate('students')
         .populate('books')
         .then((data) => res.json(data))
-        .catch((err) => console.log('ERRO: ', err))
+        .catch((err) => res.send(err.message))
 }

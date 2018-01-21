@@ -7,6 +7,8 @@ const find = require( ACTIONS_PATH + 'actions/find' )( Model )
 
 const findOne = require( ACTIONS_PATH + 'actions/findOne' )( Model )
 
+const findByName = require( ACTIONS_PATH + 'actions/findByName' )( Model )
+
 const update = require( ACTIONS_PATH + 'actions/update' )( Model )
 
 const remove = require( ACTIONS_PATH + 'actions/remove' )( Model )
@@ -15,6 +17,7 @@ module.exports = {
   create,
   find,
   findOne,
+  findByName,
   update,
   remove 
 }

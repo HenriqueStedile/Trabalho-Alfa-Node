@@ -6,5 +6,5 @@ module.exports = ( Model ) => ( req, res) => {
 
     Model.update(query, mod)
     .then((data) => res.json(data))
-    .catch((err) => console.log('ERRO: ', err))
+    .catch((err) => res.send(err.message))
   }

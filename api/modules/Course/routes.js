@@ -3,16 +3,22 @@ const router = express.Router()
 
 const Controller = require('./controller')
 
+/*
 router.get('/', (req, res, next) =>
   Controller.find(req, res, {})
-)
+)*/
+
+router.get('/', (req, res, next) => {
+  const url_parts = url.parse(req.url)
+  const query = querystring.parse(url_parts.query)
+  if (typeof query.name === undefined) {
+    Controller.find(req, res, {})
+  } else
+    Controller.findByName(req, res, query)
+})
 
 router.get('/:id', (req, res, next) =>
   Controller.findOne(req, res)
-)
-
-router.get(':name?', (req, res, next) =>
-  Controller.findByName(req, res)
 )
 
 router.get('/:id/populate', (req, res, next) =>
