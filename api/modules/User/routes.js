@@ -12,7 +12,6 @@ router.get('/', (req, res, next) => {
     Controller.find(req, res)
   else
     Controller.findByName(req, res, query)
-
 })
 
 router.get('/:id', (req, res, next) =>
